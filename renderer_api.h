@@ -20,6 +20,11 @@ namespace RendererAPI {
 }
 
 /*
+- DO FIRST -
+Init() - starts up the rendering stuff and the thread - DONE
+Shutdown() - safely shutdown the thread and any other data is safely destroyed - DONE
+
+=====================================================================================================================
 - SETUP BEFORE QUEUE -
 EGLState Struct - DONE
 
@@ -30,7 +35,7 @@ SetViewport() - Tells GPU what area of screen to draw to
 SetClearColor() - Sets background color when clearing screen
 
 CreateShader() - Makes a GPU program (vertex + fragment shader) - DONE
-DestroyShader() - Deletes shader when no longer needed - DONE
+BindShader() - IDK what this does, claude said i needed it (I do not know how to do GPU stuff lol, but im learning) - DONE
 CreateVertexBuffer() - Creates memory on GPU for vertex data
 UploadVertexBufferData() - Fills vertex buffer with data
 CreateIndexBuffer() - Creates buffer for triangle indices
