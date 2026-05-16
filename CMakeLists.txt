@@ -18,23 +18,23 @@ find_path(EGL_INCLUDE_DIR  NAMES EGL/egl.h   REQUIRED)
 find_path(GLES_INCLUDE_DIR NAMES GLES3/gl3.h REQUIRED)
 
 # ── RendererAPI ───────────────────────────────────────────────────────────────
-add_library(RendererAPI SHARED
+add_library(HandheldRendererAPI SHARED
         renderer_api.cpp
         threads/renderer_thread.cpp
 )
 
-target_include_directories(RendererAPI
+target_include_directories(HandheldRendererAPI
         PUBLIC  ${CMAKE_SOURCE_DIR}        # renderer_api.h — consumers get this automatically
         PRIVATE ${EGL_INCLUDE_DIR}
         ${GLES_INCLUDE_DIR}
 )
 
-target_link_libraries(RendererAPI PRIVATE
+target_link_libraries(HandheldRendererAPI PRIVATE
         ${EGL_LIB}
         ${GLESV2_LIB}
         ${MALI_LIB}
 )
 
 # ── Install (cmake --install, or use as reference for manual scp paths) ───────
-install(TARGETS RendererAPI LIBRARY DESTINATION /usr/lib)
+install(TARGETS HandheldRendererAPI LIBRARY DESTINATION /usr/lib)
 install(FILES   renderer_api.h      DESTINATION /usr/include)
